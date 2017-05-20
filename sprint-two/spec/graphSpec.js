@@ -45,6 +45,15 @@ describe('graph', function() {
     expect(graph.hasEdge(4, 5)).to.equal(false);
   });
 
+  it('should not have edges, only nodes', function() {
+    graph.addNode(1);
+    graph.addNode(2);
+    expect(graph.hasEdge(2, 1)).to.equal(false);
+    expect(graph.contains(1)).to.equal(true);
+    expect(graph.contains(2)).to.equal(true);
+
+  });
+
   it('should remove edges between nodes when a node is removed', function() {
     graph.addNode(4);
     graph.addNode(5);

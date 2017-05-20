@@ -41,4 +41,11 @@ describe('tree', function() {
     expect(tree.contains(8)).to.equal(true);
   });
 
+  it ('should return a boolean when invoking contains', function() {
+    tree.addChild(5);
+    tree.addChild(7);
+    expect(tree.contains(8)).to.equal(false);
+    expect(tree.contains(5)).to.equal(true);
+  });
+
 });

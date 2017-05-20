@@ -36,6 +36,20 @@ describe('binarySearchTree', function() {
     binarySearchTree.depthFirstLog(func);
     expect(array).to.eql([5, 2, 3]);
   });
+
+  it('should expect callback return the same result if called twice', function() {
+    var array1 = [];
+    var func1 = function(value) { array1.push(value); };
+    var array2 = [];
+    var func2 = function(value) { array2.push(value); };
+    var expected;
+    binarySearchTree.insert(2);
+    binarySearchTree.insert(3);
+    binarySearchTree.depthFirstLog(func1);
+    binarySearchTree.depthFirstLog(func2);
+    expected = _.isEqual(array1, array2);
+    expect(expected).to.equal(true);
+
+
+  });
 });
-
-

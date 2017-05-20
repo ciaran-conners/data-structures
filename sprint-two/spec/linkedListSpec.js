@@ -51,5 +51,11 @@ describe('linkedList', function() {
     expect(linkedList.contains(4)).to.equal(false);
   });
 
+  it('should not be indexed', function() {
+    linkedList.addToTail(6);
+    linkedList.addToTail(7);
+    expect(!linkedList[0]);
+  });
+
   // add more tests here to test the functionality of linkedList
 });
