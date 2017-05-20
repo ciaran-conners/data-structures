@@ -47,6 +47,19 @@ describe('hashTable', function() {
     window.getIndexBelowMaxForKey = oldHashFunction;
   });
 
+  it('bucket should remain after deleting a key in the bucket if other keys exist in the bucket', function() {
+    var v1 = 'Ciaran';
+    var v2 = 'Kenneth';
+    var oldHashFunction = window.getIndexBelowMaxForKey;
+    window.getIndexBelowMaxForKey = function() { return 0; };
+    hashTable.insert(v1, v1);
+    hashTable.insert(v2, v2);
+    hashTable.remove(v1);
+    var x = hashTable.retrieve(v2);
+    expect(x).to.equal(v2);
+    window.getIndexBelowMaxForKey = oldHashFunction;
+  });
+
   // (Advanced! Remove the extra "x" when you want the following tests to run)
   xit ('should double in size when needed', function() {
     _.each(people, function(person) {

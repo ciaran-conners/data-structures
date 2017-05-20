@@ -29,9 +29,10 @@ HashTable.prototype.retrieve = function(k) {
 
 HashTable.prototype.remove = function(k) {
   var index = getIndexBelowMaxForKey(k, this._limit);
-  this._storage.each(function(el, idx, storage) {
-    if (idx === index) {
-      storage.splice(idx, 1);
+  var bucket  = this._storage.get(index);
+  _.each(bucket, function(tuple, idx) {
+    if (_.contains(tuple, k)) {
+      bucket.splice(idx, 1);
     }
   });
 };
