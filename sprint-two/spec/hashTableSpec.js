@@ -47,7 +47,7 @@ describe('hashTable', function() {
     window.getIndexBelowMaxForKey = oldHashFunction;
   });
 
-  it('bucket should remain after deleting a key in the bucket if other keys exist in the bucket', function() {
+  it('should not delete bucket when deleting a value if other values exist on bucket', function() {
     var v1 = 'Ciaran';
     var v2 = 'Kenneth';
     var oldHashFunction = window.getIndexBelowMaxForKey;
