@@ -23,7 +23,7 @@ var LinkedList = function() {
   };
 
   list.contains = function(target, currentNode) {
-    var currentNode = currentNode || list.head;
+    currentNode = currentNode || list.head;
     if (currentNode.value === target) {
       return true;
     } else {
@@ -34,7 +34,6 @@ var LinkedList = function() {
     }
     return false;
   };
-
   return list;
 };
 

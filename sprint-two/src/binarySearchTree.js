@@ -9,19 +9,10 @@ var BinarySearchTree = function(value) {
 
 var bstMethods = {};
 
-/*
-    5 root
-    insert 2
-left   right
-  2
-
-*/
-
 bstMethods._recusiveInsert = function(node, newNode, dir) {
   if (node) {
     node.insert(newNode.value);
   } else {
-      // at this point, we have to assign newNode to a BST
     this[dir] = newNode;
   }
 };
@@ -32,25 +23,21 @@ bstMethods.insert = function(value) {
   this._recusiveInsert(this[dir], newNode, dir);
 };
 
-bstMethods.contains = function(target, currentNode) {
-  currentNode = currentNode || this;
+bstMethods.contains = function(target) {
+  var currentNode = currentNode || this;
   if (currentNode.value === target) {
     return true;
   }
-
   if (currentNode.value <= target) {
     currentNode = currentNode.right;
   } else {
     currentNode = currentNode.left;
   }
-
   if (!currentNode) {
     return false;
   }
-
-  return currentNode.contains(target, currentNode);
+  return currentNode.contains(target);
 };
-
 
 bstMethods.depthFirstLog = function(callback) {
   if (Object.getPrototypeOf(this) !== bstMethods) {
@@ -59,7 +46,6 @@ bstMethods.depthFirstLog = function(callback) {
   callback(this.value);
   this.depthFirstLog.call(this.left, callback);
   this.depthFirstLog.call(this.right, callback);
-
 };
 
 /*
